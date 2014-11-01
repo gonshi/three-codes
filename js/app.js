@@ -211,9 +211,9 @@
 						second: 'C',
 						third: 'Dm'
 					},
-					bpm: 128,
+					bpm: 126,
 					beat: 4,
-					start: 14.8
+					start: 13.6
 				}
 			], // By the way 
 			[
@@ -556,7 +556,7 @@
 
 	ns.init = function(){
 		ns.codePattern = Math.floor( Math.random() * ns.songList.length );
-    //ns.codePattern = ns.songList.length - 1;
+    //ns.codePattern = ns.songList.length - 3;
 		ns.currentSong = 0;
 		ns.tempo = 60 / ns.songList[ns.codePattern][ns.currentSong].bpm;
     ns.scroll();
