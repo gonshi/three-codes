@@ -342,16 +342,24 @@
 			},
 		});
 		var play = function(json) {
-				ns.showAnswer(json);
-        fadeVal = ns.defaultFadeVal;
-        if( json.results[0].previewUrl.substr(-3, 3) === 'm4v' ) fadeVal = 0.038; // ビデオは音が小さいので最大まであげる
-				ns.song = new Audio(json.results[0].previewUrl);
-				ns.song.volume = 0;
+      var is_played = false;
+      fadeVal = ns.defaultFadeVal;
+      if( json.results[0].previewUrl.substr(-3, 3) === 'm4v' ) fadeVal = 0.038; // ビデオは音が小さいので最大まであげる
+      ns.song = new Audio(json.results[0].previewUrl);
+
+      ns.song.addEventListener( 'canplaythrough', function(){
+        if( is_played === true ){ // play only once
+          return;
+        }
+        is_played = true;
+
+        ns.showAnswer(json);
+        ns.song.volume = 0;
         // thinking expression
         $('.chara').removeClass( 'play' ).addClass( 'think' );
         setTimeout(function(){ //thinking time expression	
           var delay;
-					$('.chara').removeClass( 'think' ).addClass( 'got' );
+          $('.chara').removeClass( 'think' ).addClass( 'got' );
           if( ( delay = ns.songList[ns.codePattern][ns.currentSong].start ) < 0 ){
             setTimeout(function(){
               ns.song.play();
@@ -363,13 +371,14 @@
             ns.song.play();
             fadeIn();
           }
-					setTimeout(function(){
-						danceAndPlay('first', ns.tempo, ns.songList[ns.codePattern][ns.currentSong].beat );
-						setTimeout(function(){
-							$('.chara').removeClass( 'got' );
-						}, thinkTime); 
-					}, 1400 ); // wait for fade in expression of the song
+          setTimeout(function(){
+            danceAndPlay('first', ns.tempo, ns.songList[ns.codePattern][ns.currentSong].beat );
+            setTimeout(function(){
+              $('.chara').removeClass( 'got' );
+            }, thinkTime); 
+          }, 1400 ); // wait for fade in expression of the song
         }, thinkTime);
+      } );
 		};
 	};
 
