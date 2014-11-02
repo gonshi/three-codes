@@ -211,9 +211,9 @@
 						second: 'C',
 						third: 'Dm'
 					},
-					bpm: 126,
+					bpm: 124,
 					beat: 4,
-					start: 13.6
+					start: 14.0
 				}
 			], // By the way 
 			[
@@ -229,6 +229,19 @@
 					start: 8.0 
 				}
 			], // Overdrive 
+			[
+				{
+					id: '321108219',
+					code:{
+						first: 'As',
+						second: 'F',
+						third: 'Gm'
+					},
+					bpm: 100,
+					beat: 4,
+					start: 11.5 
+				}
+			] // Taylor swift Teardrops On My Guitar 
 		];
 	};
 	global.codes = ns;
@@ -558,14 +571,14 @@
 		ns.init();
     /*
     ns.itunesSearch({
-      term: 'overdrive',
+      term: 'Teardrops On My Guitar',
       limit: 10 
     });*/
   });
 
 	ns.init = function(){
 		ns.codePattern = Math.floor( Math.random() * ns.songList.length );
-    //ns.codePattern = ns.songList.length - 3;
+    //ns.codePattern = ns.songList.length - 1;
 		ns.currentSong = 0;
 		ns.tempo = 60 / ns.songList[ns.codePattern][ns.currentSong].bpm;
     ns.scroll();
