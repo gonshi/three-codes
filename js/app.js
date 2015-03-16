@@ -593,6 +593,21 @@
 		ns.btnHandler(0);
     
     ns.resetAnswer();
+
+    // 裏サイトへ
+    $('#ura').on('click', function(){
+      $('#wrapper').velocity({
+        rotateY: '90deg',
+        scale: 0.5
+      }, 1500, function(){
+        $('.threeSize').show();
+
+        $('#wrapper').velocity({
+          rotateY: '180deg',
+          scale: 1
+        }, 1500);
+      });
+    });
 	};
 
   global.codes = ns;
