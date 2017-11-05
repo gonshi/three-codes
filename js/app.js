@@ -699,13 +699,14 @@
   'use strict';
   ns = ns || {};
   $(function() {
+    if(location.href.match(/https/)) location.replace('http://github.com/gonshi/three-codes');
     ns.ua();
     ns.songReset();
 		ns.init();
     /*
     ns.itunesSearch({
       term: 'Teardrops On My Guitar',
-      limit: 10 
+      limit: 10
     });*/
   });
 
@@ -722,7 +723,7 @@
 		btn.find('.second').removeClass('selected');
 		btn.find('.third').removeClass('selected');
 		ns.btnHandler(0);
-    
+
     ns.resetAnswer();
 
     // 裏サイトへ
