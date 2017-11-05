@@ -699,7 +699,7 @@
   'use strict';
   ns = ns || {};
   $(function() {
-    if(location.href.match(/https/)) location.replace('http://github.com/gonshi/three-codes');
+    if(location.href.match(/https/)) location.replace('http://gonshi.github.io/three-codes');
     ns.ua();
     ns.songReset();
 		ns.init();
